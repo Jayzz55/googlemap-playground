@@ -24,4 +24,12 @@
     content: 'I like rice'
   });  
 
+  var found = map.findMarkerByLat(37.781350);
+  
+  console.log('found');
+
+  map._removeMarker(marker2);
+  
+  console.log(map.markers);
+
 }(window, window.Mapster));
