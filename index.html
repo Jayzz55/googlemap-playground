@@ -7,12 +7,16 @@
 
 <body>
   <h1>hello</h1>
+  <input type="text" style="width: 250px" id='txtPlaces' placeholder="Enter a location">
+  <button id="find-btn">find</button>
   <div id="map-canvas"></div>
-    <script src="https://maps.googleapis.com/maps/api/js?sensor=false">
+    <script src="https://maps.googleapis.com/maps/api/js?sensor=false&libraries=places">
   </script>
+  <script src="jquery.min.js"></script>
   <script src="Mapster.js"></script>
   <script src="map-options.js"></script>
   <script src="script.js"></script>
+  
 </body>
 
 </html>
