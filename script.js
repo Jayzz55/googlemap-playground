@@ -19,17 +19,21 @@
   });
 
   var marker2 = map.addMarker({
+    id: 2,
     lat: 37.781350,
     lng: -122.485883,
     content: 'I like rice'
   });  
 
-  var found = map.findMarkerByLat(37.781350);
+  // var found = map.findBy(function(marker) {
+  //   return marker.id === 2;
+  // });  
   
-  console.log('found');
+  var removed = map.removeBy(function(marker) {
+    return marker.id === 2;
+  });  
 
-  map._removeMarker(marker2);
-  
-  console.log(map.markers);
+  // console.log(found);
+  console.log(removed);
 
 }(window, window.Mapster));
