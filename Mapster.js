@@ -19,7 +19,7 @@
       _on: function(opts) {
         var self = this;
         google.maps.event.addListener(opts.obj, opts.event, function(e){
-          opts.callback.call(self, e);
+          opts.callback.call(self, e, opts.obj);
         });
       },
       addMarker: function(opts){
@@ -33,12 +33,8 @@
           this.markerClusterer.addMarker(marker);  
         }
         this.markers.add(marker);
-        if (opts.event) {
-          this._on({
-            obj: marker,
-            event: opts.event.name,
-            callback: opts.event.callback
-          });
+        if (opts.events) {
+          this._attachEvents(marker, opts.events);
         }
         if (opts.content) {
           this._on({
@@ -54,6 +50,15 @@
            })
          }
         return marker;
+      },
+      _attachEvents: function(obj, events) {
+        events.forEach(function(event) {
+          this._on({
+            obj: obj,
+            event: event.name,
+            callback: event.callback
+          });
+        }.bind(this));
       },
       findBy: function(callback) {
         return this.markers.find(callback);
