@@ -25,15 +25,26 @@
     content: 'I like rice'
   });  
 
-  // var found = map.findBy(function(marker) {
-  //   return marker.id === 2;
-  // });  
-  
-  var removed = map.removeBy(function(marker) {
-    return marker.id === 2;
-  });  
+  for (var i = 0; i < 40; i++) {
+    map.addMarker({
+      id: 2,
+      lat: 37.781350 + Math.random(),
+      lng: -122.485883 + Math.random(),
+      content: 'I like rice'
+    }); 
+    
+    var marker = map.addMarker({
+      lat: 37.791350 + Math.random(),
+      lng: -122.435883 + Math.random(),
+      content: '<div style="color: #f00;">I like food</div>'
+    });
+  } 
 
-  // console.log(found);
-  console.log(removed);
+  map.removeBy(function(marker) {
+    if (marker.id === 2) {
+      console.log(marker);
+    }
+    return marker.id === 2;
+  });
 
 }(window, window.Mapster));
