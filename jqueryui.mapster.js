@@ -46,6 +46,10 @@
         this.map.removeBy(callback);
       },
 
+      getCurrentPosition: function(callback) {
+        this.map.getCurrentPosition(callback);
+      },
+
       setPano: function(selector, opts) {
         var elements = $(selector),
             self = this;

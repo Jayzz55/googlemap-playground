@@ -23,6 +23,13 @@
     location: 'Golden Gate Bridge, San Francisco, CA'
   });
 
+  $mapster.mapster('getCurrentPosition', function(position) {
+    $mapster.mapster('addMarker', {
+      lat: position.coords.latitude,
+      lng: position.coords.longitude
+    });      
+  });
+
   // set panorama
   // $mapster.mapster('setPano', '#pip-pano', {
   //   position: {
