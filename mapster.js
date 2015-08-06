@@ -7,6 +7,9 @@
       if (opts.cluster) {
         this.markerClusterer = new MarkerClusterer(this.gMap, []);
       }
+      if (opts.geocoder) {
+        this.geocoder = new google.maps.Geocoder();
+      }
     }
     Mapster.prototype = {
       zoom: function(level) {
@@ -20,6 +23,17 @@
         var self = this;
         google.maps.event.addListener(opts.obj, opts.event, function(e){
           opts.callback.call(self, e, opts.obj);
+        });
+      },
+      geocode: function(opts) {
+        this.geocoder.geocode({
+          address: opts.address
+        }, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            opts.success.call(this, results, status);
+          } else {
+            opts.error.call(this, status);
+          }
         });
       },
       setPano: function(element, opts) {

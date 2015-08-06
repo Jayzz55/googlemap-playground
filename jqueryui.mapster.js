@@ -18,7 +18,24 @@
  
       // Add a marker onto the map
       addMarker: function( opts ) {
-        this.map.addMarker(opts);
+        var self = this;
+        if (opts.location) {
+          this.map.geocode({
+            address: opts.location,
+            success: function(results) {
+              results.forEach(function(result) {
+                opts.lat = result.geometry.location.lat();
+                opts.lng = result.geometry.location.lng();
+                self.map.addMarker(opts);
+              });
+            },
+            error: function(status) {
+              console.error(status)
+            }
+          });
+        } else {
+          this.map.addMarker(opts);  
+        }
       },
       
       findMarkers: function(callback) {
