@@ -22,6 +22,13 @@
           opts.callback.call(self, e, opts.obj);
         });
       },
+      setPano: function(element, opts) {
+        var panorama = new google.maps.StreetViewPanorama(element, opts);
+        if (opts.events) {
+          this._attachEvents(panorama, opts.events);
+        }
+        this.gMap.setStreetView(panorama);
+      },
       addMarker: function(opts){
         var marker;
         opts.position = {
