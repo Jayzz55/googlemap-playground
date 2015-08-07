@@ -50,6 +50,12 @@
         }
         this.gMap.setStreetView(panorama);
       },
+      setPlaces: function(element, opts) {
+        console.log(element);
+        var places = new google.maps.places.Autocomplete(element);
+        
+        this._attachEvents(places, opts.events);
+      },
       addMarker: function(opts){
         var marker;
         opts.position = {

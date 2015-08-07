@@ -30,6 +30,16 @@
     });      
   });
 
+  $mapster.mapster('setPlaces', 'txtPlaces', {
+    events: [{
+      name: 'place_changed',
+      callback: function(e, sob){
+        var place = sob.getPlace();
+        console.log(place.geometry.location);
+      }
+    }]
+  });
+
   // set panorama
   // $mapster.mapster('setPano', '#pip-pano', {
   //   position: {

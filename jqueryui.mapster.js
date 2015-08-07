@@ -57,7 +57,12 @@
           self.map.setPano(element, opts);             
         });
       },
-      
+
+      setPlaces: function(selector, opts) {
+        element = document.getElementById(selector);
+        this.map.setPlaces(element, opts);  
+      },
+
       markers: function() {
         return this.map.markers.items;
       },
